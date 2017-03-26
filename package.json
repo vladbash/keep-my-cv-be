@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "dev": "nodemon -L src --exec \"babel-node src --presets es2015,stage-0\"",
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "node dist",
     "prestart": "npm run -s build",
-    "test": "eslint src"
+    "test": "eslint src",
+    "clear": "fuser -k -n tcp 3080",
+    "migrate": "NODE_ENV=development sequelize db:migrate"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,9 @@
     "cors": "^2.7.1",
     "express": "^4.15.2",
     "morgan": "^1.8.0",
-    "resource-router-middleware": "^0.6.0"
+    "mysql2": "^1.2.0",
+    "resource-router-middleware": "^0.6.0",
+    "sequelize": "^3.30.2"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

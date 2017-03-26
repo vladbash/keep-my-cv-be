@@ -1,11 +1,18 @@
 import { version } from '../../package.json';
 import { Router } from 'express';
-import candidates from './candidates';
+import users from './users';
+import login from './login';
+import registration from './registration';
 
-export default ({ config, db }) => {
+export default ({ config }) => {
 	let api = Router();
-	// mount the candidates resource
-	api.use('/candidates', candidates({ config, db }));
+
+	/**
+	 * custom routes
+	 */
+	api.use('/login', login({ config }));
+	api.use('/users', users({ config }));
+	api.use('/registration', registration({ config }));
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {

@@ -1,22 +1,22 @@
 import resource from 'resource-router-middleware';
-import candidates from '../models/candidate';
+import users from '../models/users';
 
-export default ({ config, db }) => resource({
-    /** Property name to store preloaded entity on `request` */
-    id: 'candidate',
+export default ({ config }) => resource({
+    id: 'users',
 
-    /** For requests with an `id`, you can auto-load the entity.
-	 *  Errors terminate the request, success sets `req[id] = data`.
-	 */
     load(req, id, callback) {
-        let tempCandidate = candidates.find(cand => cand.id === id),
-            err = tempCandidate ? null : 'Not found';
-        callback(err, tempCandidate);
+        users.findById(id, {
+            attributes: ['id', 'name', 'email']
+        }).then(res => {
+            callback(null, JSON.parse(res));
+        }).catch(err => {
+            callback(err, null);
+        });
     },
 
     /** GET / - List all entities */
     index({ params }, res) {
-        res.json(candidates);
+        res.json({test: params});
     },
 
     /** POST / - Create a new entity */
@@ -47,4 +47,4 @@ export default ({ config, db }) => resource({
         res.sendStatus(204);
     }
 
-});
+})

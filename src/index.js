@@ -19,22 +19,18 @@ app.use(cors({
 	exposedHeaders: config.corsHeaders
 }));
 
-app.use(bodyParser.json({
-	limit : config.bodyLimit
-}));
+app.use(bodyParser.urlencoded())
 
-// connect to db
-initializeDb( db => {
+app.use(bodyParser.json());
 
-	// internal middleware
-	app.use(middleware({ config, db }));
+// internal middleware
+app.use(middleware({ config }));
 
-	// api router
-	app.use('/api', api({ config, db }));
+// api router
+app.use('/api', api({ config }));
 
-	app.server.listen(process.env.PORT || config.port);
+app.server.listen(process.env.PORT || config.port);
 
-	console.log(`Started on port ${app.server.address().port}`);
-});
+console.log(`Started on port ${app.server.address().port}`);
 
 export default app;
