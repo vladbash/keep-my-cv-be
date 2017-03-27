@@ -11,6 +11,8 @@ import config from './config.json';
 let app = express();
 app.server = http.createServer(app);
 
+app.set('superSecret', 'HowToBePolite1221?SayPlease');
+
 // logger
 app.use(morgan('dev'));
 
