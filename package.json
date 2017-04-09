@@ -23,24 +23,26 @@
   },
   "homepage": "https://github.com/vladb95/keep-my-cv-be#readme",
   "dependencies": {
-    "body-parser": "^1.13.3",
-    "compression": "^1.5.2",
-    "cors": "^2.7.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "cors": "^2.8.3",
     "express": "^4.15.2",
     "jsonwebtoken": "^7.3.0",
     "morgan": "^1.8.0",
+    "mysql": "^2.13.0",
     "mysql2": "^1.2.0",
     "resource-router-middleware": "^0.6.0",
-    "sequelize": "^3.30.2",
+    "sequelize": "^3.30.4",
     "sequelize-classes": "^0.1.12"
   },
   "devDependencies": {
-    "babel-cli": "^6.9.0",
-    "babel-core": "^6.9.0",
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "eslint": "^3.1.1",
-    "nodemon": "^1.9.2"
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "eslint": "^3.19.0",
+    "nodemon": "^1.11.0"
   }
 }

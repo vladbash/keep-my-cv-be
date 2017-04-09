@@ -5,8 +5,8 @@ import models from '../models';
 export default ({ config }) => resource({
     id: 'registaration',
 
-    create({ body }, res) {
-        models.Users.create(body)
+    create(req, res) {
+        models.Users.create(req.body)
             .then(data => {
                 res.json(data);
             });
