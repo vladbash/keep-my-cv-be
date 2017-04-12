@@ -8,14 +8,15 @@ export default ({ config }) => resource({
     /**
      * Loginning
      */
-    create({ body }, res) { 
+    create({ body }, res) {
+        console.log(body);
         models.Users.findOne({
             where: {
-                email: body.email
+                email: body.login.toString().toLowerCase()
             }
         }).then(user => {
-            if(!models.Users.isPassword(user.password, body.password)) {
-                res.status(400).json(['Username or password is incorrect']);
+            if (!user || !models.Users.isPassword(user.password, body.password)) {
+                res.status(400).json({ 'error': 'Username or password is incorrect' });
             } else {
                 let token = jwthelper.sign(user.dataValues);
                 res.status(200).json({
