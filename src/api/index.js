@@ -4,6 +4,7 @@ import users from './users';
 import login from './login';
 import registration from './registration';
 import Authorize from '../libs/autorizate';
+import remind from './remind';
 
 export default ({ config }) => {
 	let api = Router();
@@ -13,6 +14,7 @@ export default ({ config }) => {
 	 */
 	api.use('/login', login({ config }));
 	api.use('/registration', registration({ config }));
+	api.use('/remind', remind({ config }));
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
 		res.json({ version });
