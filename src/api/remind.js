@@ -1,6 +1,6 @@
 import resource from 'resource-router-middleware';
 import models from '../models';
-import password from 'generate-password';
+import generator from 'generate-password';
 import bcrypt from 'bcrypt';
 
 export default ({ config }) => resource({
