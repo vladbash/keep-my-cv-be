@@ -10,7 +10,6 @@ export default ({ config }) => resource({
      * Loginning
      */
     create({ body }, res) {
-        console.log(body);
         if (_.isEmpty(body)) {
             res.status(400).json({ 'error': 'Incorrect params' });
         } else {

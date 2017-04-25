@@ -17,7 +17,6 @@ export default ({ config }) => {
 	api.get('/', (req, res) => {
 		res.json({ version });
 	});
-
 	
 	api.use(Authorize);
 	api.use('/users', users({ config }));

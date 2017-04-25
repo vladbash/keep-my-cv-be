@@ -24,7 +24,10 @@ module.exports = (sequelize, DataType) => {
         },
         createdAt: {
             type: DataType.DATE,
-            allowNull: false
+            allowNull: false,
+            validator: {
+                isDate: true
+            }
         },
         avatar: {
             type: DataType.STRING,
@@ -32,7 +35,10 @@ module.exports = (sequelize, DataType) => {
         },
         updatedAt: {
             type: DataType.DATE,
-            allowNull: true
+            allowNull: true,
+            validator: {
+                isDate: true
+            }
         },
         password: {
             type: DataType.STRING,
@@ -43,7 +49,7 @@ module.exports = (sequelize, DataType) => {
         },
         isActive: {
             type: DataType.BOOLEAN,
-            defaultValue: true
+            defaultValue: false
         },
         email: {
             type: DataType.STRING,
@@ -51,6 +57,7 @@ module.exports = (sequelize, DataType) => {
             allowNull: false,
             validate: {
                 notEmpty: true,
+                isEmail: true,
             },
         },
     }, {
