@@ -1,10 +1,12 @@
 import { version } from '../../package.json';
 import { Router } from 'express';
-import users from './users';
-import login from './login';
-import registration from './registration';
+import users from './user/users';
+import login from './authentification/login';
+import registration from './authentification/registration';
 import Authorize from '../libs/autorizate';
-import remind from './remind';
+import remind from './authentification/remind';
+import profile from './user/profile';
+
 
 export default ({ config }) => {
 	let api = Router();
@@ -22,6 +24,7 @@ export default ({ config }) => {
 	
 	api.use(Authorize);
 	api.use('/users', users({ config }));
+	api.use('/profile', profile({ config }));
 
 	return api;
 }

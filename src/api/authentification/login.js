@@ -1,7 +1,7 @@
 import resource from 'resource-router-middleware';
-import models from '../models';
+import models from '../../models';
 import jwt from 'jsonwebtoken';
-import jwthelper from '../libs/jwthelper';
+import jwthelper from '../../libs/jwthelper';
 import _ from 'lodash';
 
 export default ({ config }) => resource({

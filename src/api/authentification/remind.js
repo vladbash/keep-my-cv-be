@@ -1,5 +1,5 @@
 import resource from 'resource-router-middleware';
-import models from '../models';
+import models from '../../models';
 import generator from 'generate-password';
 import bcrypt from 'bcrypt';
 

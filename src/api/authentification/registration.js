@@ -1,5 +1,5 @@
 import resource from 'resource-router-middleware';
-import models from '../models';
+import models from '../../models';
 
 export default ({ config }) => resource({
     id: 'registaration',

@@ -1,5 +1,5 @@
 import resource from 'resource-router-middleware';
-import users from '../models/users';
+import users from '../../models/users';
 
 export default ({ config }) => resource({
     id: 'users',
