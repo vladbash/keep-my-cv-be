@@ -5,7 +5,9 @@ export default ({ config }) => resource({
     id: 'profile',
 
     index({ user }, res) {
-        res.status(200).json(user);
+        let respUser = user;
+        delete respUser.dataValues.password;
+        res.status(200).json(respUser);
     },
 
     update({ user, body }, res) {

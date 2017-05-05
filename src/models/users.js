@@ -25,13 +25,15 @@ module.exports = (sequelize, DataType) => {
         createdAt: {
             type: DataType.DATE,
             allowNull: false,
+            defaultValue: DataType.NOW,
             validator: {
                 isDate: true
             }
         },
         avatar: {
             type: DataType.STRING,
-            allowNull: true
+            allowNull: false,
+            defaultValue: 'avatar.png'
         },
         updatedAt: {
             type: DataType.DATE,
@@ -65,13 +67,19 @@ module.exports = (sequelize, DataType) => {
                 beforeCreate: user => {
                     const salt = bcrypt.genSaltSync();
                     user.password = bcrypt.hashSync(user.password, salt);
-                    user.createdAt = new Date();
                 },
+                beforeUpdate: user => {
+                    user.updatedAt = new Date();
+                }
             },
             classMethods: {
                 isPassword: (encodedPassword, password) => {
                     return bcrypt.compareSync(password, encodedPassword);
                 },
+                associate: models => {
+                    Users.hasMany(models.Candidates);
+                    Users.hasMany(models.Label);
+                }
             },
         });
     return Users;

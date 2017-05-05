@@ -6,6 +6,7 @@ import registration from './authentification/registration';
 import Authorize from '../libs/autorizate';
 import remind from './authentification/remind';
 import profile from './user/profile';
+import candidates from './candidates/candidates';
 
 
 export default ({ config }) => {
@@ -25,6 +26,7 @@ export default ({ config }) => {
 	api.use(Authorize);
 	api.use('/users', users({ config }));
 	api.use('/profile', profile({ config }));
+	api.use('/candidates', candidates({ config }));
 
 	return api;
 }
